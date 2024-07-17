@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate of Registration of Marriage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+        }
+        
+        .certificate {
+            width: 80%;
+            max-width: 800px;
+            border: 1px solid #000;
+            padding: 20px;
+            background: #fff;
+        }
+        
+        .header,
+        .content,
+        .footer {
+            text-align: center;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .photo-box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .title-box {
+            flex: 1;
+            padding: 0 10px;
+        }
+        
+        .title-box .logo {
+            height: 50px;
+        }
+        
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        
+        .form-group label {
+            flex: 1;
+            text-align: left;
+            padding-left: 50px;
+        }
+        
+        .form-group .input {
+            flex: 2;
+            border-bottom: 2px solid #000;
+            margin-right: 150px;
+        }
+        
+        .footer {
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+            }
+            .photo-box {
+                margin-bottom: 10px;
+            }
+            .form-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .form-group label,
+            .form-group .input {
+                width: 100%;
+            }
+        }
+    </style>
+    
+    <div class="certificate">
+        <div class="header">
+            <div class="photo-box">फोटो</div>
+            <div class="title-box">
+                <img src="/img/logo1.png" alt="Logo" class="logo">
+                <h1>महाराष्ट्र शासन</h1>
+                <p>(नगर पालिका ठाणे महा पालीका, पं, ६१६/६१८ शिवनेरी, ठाणे ४०० ६०१)<br> फाॅम नं. - FORM E<br> विवाह नोंदणी प्रमाणपत्र<br> CERTIFICATE OF REGISTRATION OF MARRIAGE</p>
+                <p>(विवाह नोंदणी अधिनियम १९९८ व नियम १९ अंतर्गत)</p>
+            </div>
+            <div class="photo-box">फोटो</div>
+        </div>
+        
+        <div class="content">
+            <div class="form-group">
+                <label>पतीचे नाव / Husband's Name:</label>
+                <span id="certHusbandName" class="input"></span>
+            </div>
+            
+            <div class="form-group">
+                <label>पत्नीचे नाव / Wife's Name:</label>
+                <span id="certWifeName" class="input"></span>
+            </div>
+            
+            <div class="form-group">
+                <label>पत्नी UID क्र / Wife UID No:</label>
+                <span id="certWifeUID" class="input"></span>
+            </div>
+            
+            <div class="form-group">
+                <label>पती UID क्र / Husband UID No:</label>
+                <span id="certHusbandUID" class="input"></span>
+            </div>
+            
+            <div class="form-group">
+                <label>पतीचे निवासस्थान / Husband Residence:</label>
+                <span id="certHusbandResidence" class="input"></span>
+            </div>
+            
+            <div class="form-group">
+                <label>पत्नीचे निवासस्थान / Wife Residence:</label>
+                <span id="certWifeResidence" class="input"></span>
+            </div>
+            
+            <div class="form-group">
+                <label>लग्नाची तारीख / Marriage Date:</label>
+                <span id="certMarriageDate" class="input"></span>
+            </div>
+            
+            <div class="form-group">
+                <label>लग्नाचे ठिकाण / Marriage Place:</label>
+                <span id="certMarriagePlace" class="input"></span>
+            </div>
+            
+            <div class="form-group">
+                <label>रजिस्ट्रार क्रमांक / Registrar Number:</label>
+                <span id="certRegisterNumber" class="input"></span>
+            </div>
+            
+            <div class="form-group">
+                <label>तालुका / Taluka:</label>
+                <span id="certTaluka" class="input"></span>
+            </div>
+            
+            <div class="form-group">
+                <label>जिल्हा / District:</label>
+                <span id="certDistrict" class="input"></span>
+            </div>
+        </div>
+    </div>
+  
+<script>
+    const certificateData = JSON.parse(sessionStorage.getItem('certificateData'));
+
+    if (certificateData) {
+        document.getElementById('certHusbandName').innerText = certificateData.husbandName;
+        document.getElementById('certWifeName').innerText = certificateData.wifeName;
+        document.getElementById('certHusbandUID').innerText = certificateData.husbandUID;
+        document.getElementById('certWifeUID').innerText = certificateData.wifeUID;
+        document.getElementById('certHusbandResidence').innerText = certificateData.husbandResidence;
+        document.getElementById('certWifeResidence').innerText = certificateData.wifeResidence;
+        document.getElementById('certMarriageDate').innerText = certificateData.marriageDate;
+        document.getElementById('certMarriagePlace').innerText = certificateData.marriagePlace;
+        document.getElementById('certRegisterNumber').innerText = certificateData.registerNumber;
+        document.getElementById('certTaluka').innerText = certificateData.taluka;
+        document.getElementById('certDistrict').innerText = certificateData.district;
+    } else {
+        alert('Certificate data not found.');
+        window.location.href = 'index.html'; 
+    }
+</script>
+
+</body>
+</html>
